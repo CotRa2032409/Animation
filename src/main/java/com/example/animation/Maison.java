@@ -1,6 +1,8 @@
 package com.example.animation;
 
 import javafx.scene.Group;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.Line;
@@ -9,15 +11,14 @@ import javafx.scene.shape.Rectangle;
 
 public class Maison extends Group {
 
-    public Maison() {
-    }
-
-    public Group creerMaison(int x, int y) {
+    public Maison(int x, int y) {
         Rectangle murs = new Rectangle(x, y, 100, 75);
         murs.setFill(Color.BEIGE);
 
-        return new Group(murs, creerFenetre(x, y), creerPorte(x, y), creerToit(x, y));
+        getChildren().addAll(murs, creerFenetre(x, y), creerPorte(x, y), creerToit(x, y));
     }
+
+
 
     public Group creerFenetre(int x, int y) {
         Rectangle fenetre = new Rectangle(x + 60, y + 15, 30, 20);
@@ -53,5 +54,13 @@ public class Maison extends Group {
         toit.setFill(Color.BROWN);
 
         return new Group(toit);
+    }
+
+    public void dropShadowMaison() {
+
+        DropShadow ds = new DropShadow(10,-10,10, Color.GRAY);
+        GaussianBlur blur = new GaussianBlur(10);
+        setEffect(blur);
+        setEffect(ds);
     }
 }
