@@ -42,11 +42,15 @@ public class Animation extends Application {
         //Lune
         Etoiles lune = new Etoiles();
 
+        //Oiseaux
+        Oiseaux oiseau1 = new Oiseaux();
+        Oiseaux oiseau2 = new Oiseaux();
 
 
         Group maisons = new Group(maison1, maison2);
         Group etoiles = new Group(etoile1, etoile2, etoile3, etoile4, lune.creerLune(900, 80, 40));
-        Group root = new Group(ciel.creerCiel(), maisons, etoiles);
+        Group oiseaux = new Group(oiseau1.creerOiseaux(100, 200), oiseau2.creerOiseaux(250, 150));
+        Group root = new Group(ciel.creerCiel(), maisons, etoiles, oiseaux);
         stage.setScene(new Scene(root));
         stage.show();
     }
